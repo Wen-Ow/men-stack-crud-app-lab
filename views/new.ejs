@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add a Planet</title>
+  </head>
+  <body>
+    <h1>Add a new Planet</h1>
+    <form action="/planets" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" required />
+      <br />
+      <label for="description">Description:</label>
+      <input type="text" name="description" id="description" required />
+      <br />
+      <label for="image">Image URL:</label>
+      <input type="text" name="image" id="image" />
+      <br />
+      <button type="submit">Add Planet</button>
+    </form>
+
+    <a href="/planets/">View All Planets</a>
+  </body>
+</html>
