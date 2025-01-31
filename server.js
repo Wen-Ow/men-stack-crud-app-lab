@@ -14,13 +14,18 @@ app.use(methodOverride("_method")); // allows overriding of HTTP methods using q
 app.set("view engine", "ejs"); // sets EJS as the view engine for rendering HTML templates
 app.use(morgan("dev"));
 
-
 // Database Connection
 mongoose.connect(process.env.MONGODB_URI);
 // log connection status to terminal on start
-mongoose.connection.on("connected", () => console.log(`Connected to MongoDB ${mongoose.connection.name}.`)); // log connection to terminal
-mongoose.connection.on("error", (err) => console.error("MongoDB connection error:", err)); // log connection errors to terminal
-mongoose.connection.on("disconnected", () => console.log("MongoDB disconnected.")); // log disconnection to terminal
+mongoose.connection.on("connected", () =>
+  console.log(`Connected to MongoDB ${mongoose.connection.name}.`)
+); // log connection to terminal
+mongoose.connection.on("error", (err) =>
+  console.error("MongoDB connection error:", err)
+); // log connection errors to terminal
+mongoose.connection.on("disconnected", () =>
+  console.log("MongoDB disconnected.")
+); // log disconnection to terminal
 
 // Import Planet Model
 const Planet = require("./models/planet.js"); // import the Planet model
