@@ -4,6 +4,7 @@ dotenv.config(); // load environment variables from .env file
 const express = require("express"); // web framework for handling routes and server logic
 const mongoose = require("mongoose"); // MongoDB ODM for interacting with database
 const methodOverride = require("method-override"); // middleware that allows form submissions to simulate PUT and DELETE requests using query parameter "_method"
+const morgan = require("morgan"); // HTTP request logger middleware for Node.js
 
 const app = express();
 
@@ -11,6 +12,8 @@ const app = express();
 app.use(express.urlencoded({ extended: true })); // parse form data from requests into req.body
 app.use(methodOverride("_method")); // allows overriding of HTTP methods using query parameter "_method"
 app.set("view engine", "ejs"); // sets EJS as the view engine for rendering HTML templates
+app.use(morgan("dev"));
+
 
 // Database Connection
 mongoose.connect(process.env.MONGODB_URI);
